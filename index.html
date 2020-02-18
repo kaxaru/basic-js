@@ -1,16 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
 let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+let outputString = []
 
-class VigenereCipheringMachine {
-    constructor(flag = true) {
-        this.flag = flag
-    }
+example1 = ['attack at dawn!', 'alphonse'] //AEIHQX SX DLLU!
+example2 = ['Example of sequence: 1, 2, 3, 4.', 'lilkey'] //'PFLWTJP WQ CIOFMYMI: 1, 2, 3, 4.'
+example3 = ['cryptography', 'verylongkeyword'] //'XVPNECTXKTFU'
+example4 = ['Same length key', 'Samelengthkey'] //'KAYI WIAMMO UIW'
 
-    encrypt(message, key) {
+
+exampled1 = ['UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'] //LEARN FRONTEND DEVELOPMENT :)
+exampled2 = ['ICWWQAM KECEIK JVZZT EADGG!', 'rollingscopes'] //ROLLING SCOPES SHOOL RULES!
+
+let test = function encrypt(message, key) {
         if(message === undefined || key === undefined) {
             throw error
         }
         let offset = 0;
-        let outputString = [];
         [...message.toLowerCase()].map((m, indexMsg) => {
             if(alphabet.indexOf(m) >= 0) {
                 
@@ -19,7 +33,7 @@ class VigenereCipheringMachine {
                 charOfKey = charOfKey.toLowerCase()
                 let idxCharOfKey = alphabet.indexOf(charOfKey) + 1
                 let step = idxCharOfMsg + (idxCharOfKey - 1)
-                step = step > alphabet.length ? (step % alphabet.length) == 0 ? alphabet.length : step % alphabet.length  : step 
+                step = step > alphabet.length ? (step % alphabet.length) == 0 ? 26 : step % alphabet.length  : step 
                 outputString.push(alphabet[step - 1])
 
             } else {
@@ -28,16 +42,15 @@ class VigenereCipheringMachine {
             }
         })
 
-        
-        return (this.flag) ? outputString.join("").toUpperCase() : outputString.reverse().join("").toUpperCase()
-    }
+        //console.log(outputString.join("").toUpperCase())
+        return outputString.join("").toUpperCase()
+}
 
-    decrypt(message, key) {
+let testD = function decrypt(message, key) {
         if(message === undefined || key === undefined) {
             throw error
         }
         let offset = 0;
-        let outputString = [];
         [...message.toLowerCase()].map((m, indexMsg) => {
             if(alphabet.indexOf(m) >= 0) {
                 
@@ -55,10 +68,12 @@ class VigenereCipheringMachine {
             }
         })
 
-    
-        return (this.flag) ? outputString.join("").toUpperCase() : outputString.reverse().join("").toUpperCase()
-
-    }
+        console.log(outputString.join("").toUpperCase())
+        return outputString.join("").toUpperCase()
 }
 
-module.exports = VigenereCipheringMachine;
+
+
+    </script>
+</body>
+</html>

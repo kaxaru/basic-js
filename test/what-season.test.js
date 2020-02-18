@@ -9,7 +9,7 @@ const getSeason = require('../src/what-season.js');
 describe('What season', () => {
     // Presence requirement
 
-    describe('variable presence', () => {
+   describe('variable presence', () => {
         it.optional('function getSeason exists', () => {
             expect(getSeason).to.exist;
         });
